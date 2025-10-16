@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using TwinFocus.Config;
 using TwinFocus.Core;
 using TwinFocus.NativeAPI;
+using TwinFocus.UI;
 using MessageBox = System.Windows.MessageBox;
 
 namespace TwinFocus;
@@ -198,6 +199,10 @@ public partial class App : System.Windows.Application
 
         contextMenu.Items.Add(new ToolStripSeparator());
 
+        contextMenu.Items.Add("Settings...", null, OnOpenSettings);
+
+        contextMenu.Items.Add(new ToolStripSeparator());
+
         var hotkeyInfo = new ToolStripMenuItem($"Hotkey: {_hotkeyManager?.GetHotkeyDescription()}")
         {
             Enabled = false
@@ -216,6 +221,74 @@ public partial class App : System.Windows.Application
         if (sender is ToolStripMenuItem item)
         {
             _isEnabled = item.Checked;
+        }
+    }
+
+    private void OnOpenSettings(object? sender, EventArgs e)
+    {
+        try
+        {
+            if (_configService == null || _config == null)
+                return;
+
+            var settingsWindow = new SettingsWindow(_configService, _config);
+            settingsWindow.SettingsSaved += OnSettingsSaved;
+            settingsWindow.ShowDialog();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Failed to open settings: {ex.Message}",
+                "TwinFocus - Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
+
+    private void OnSettingsSaved(object? sender, EventArgs e)
+    {
+        // Reload config and re-register hotkey
+        try
+        {
+            // Unregister old hotkey
+            _hotkeyManager?.Unregister();
+
+            // Reload config
+            _config = _configService?.Load();
+
+            // Re-initialize components with new config
+            if (_config != null)
+            {
+                _focusController = new FocusController(_config.CompatFallback);
+                _focusController.ActivationFailed += OnActivationFailed;
+
+                _windowEnumerator = new WindowEnumerator(_config);
+                _windowOrderer = new WindowOrderer(_config);
+            }
+
+            // Re-register hotkey with new settings
+            RegisterHotkey();
+
+            // Update tray menu to show new hotkey
+            UpdateTrayIcon();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Failed to apply settings: {ex.Message}",
+                "TwinFocus - Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
+
+    private void UpdateTrayIcon()
+    {
+        if (_trayIcon?.ContextMenuStrip == null)
+            return;
+
+        // Find and update the hotkey info label
+        foreach (ToolStripItem item in _trayIcon.ContextMenuStrip.Items)
+        {
+            if (item is ToolStripMenuItem menuItem && !menuItem.Enabled)
+            {
+                menuItem.Text = $"Hotkey: {_hotkeyManager?.GetHotkeyDescription()}";
+                break;
+            }
         }
     }
 

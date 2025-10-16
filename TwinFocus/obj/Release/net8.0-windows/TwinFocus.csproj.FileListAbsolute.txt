@@ -18,3 +18,6 @@ C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\re
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\TwinFocus.pdb
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\TwinFocus.genruntimeconfig.cache
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\ref\TwinFocus.dll
+C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\UI\SettingsWindow.baml
+C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\UI\SettingsWindow.g.cs
+C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\TwinFocus.sourcelink.json

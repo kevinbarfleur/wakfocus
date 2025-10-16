@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\App.xaml
-11407045341
+2-404032739
 
-13923267962
+141785037588
 2071382875232
-MainWindow.xaml;
+MainWindow.xaml;UI\SettingsWindow.xaml;
 
 False
 
