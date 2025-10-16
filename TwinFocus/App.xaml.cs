@@ -180,8 +180,26 @@ public partial class App : System.Windows.Application
             Visible = true
         };
 
-        // Create a simple icon (you can replace this with an actual .ico file)
-        _trayIcon.Icon = SystemIcons.Application;
+        // Load icon from resources
+        try
+        {
+            var iconUri = new Uri("pack://application:,,,/Resources/icon.ico");
+            var streamInfo = System.Windows.Application.GetResourceStream(iconUri);
+            if (streamInfo != null)
+            {
+                _trayIcon.Icon = new System.Drawing.Icon(streamInfo.Stream);
+            }
+            else
+            {
+                // Fallback to system icon if custom icon not found
+                _trayIcon.Icon = SystemIcons.Application;
+            }
+        }
+        catch
+        {
+            // Fallback to system icon on error
+            _trayIcon.Icon = SystemIcons.Application;
+        }
 
         // Double-click to open settings
         _trayIcon.DoubleClick += (s, e) => OnOpenSettings(s, e);
