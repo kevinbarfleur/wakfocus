@@ -1,6 +1,6 @@
 # WakFocus - Window Switcher for Wakfu Multi-Accounting
 
-[![CodeQL](https://github.com/kbarf/wakfocus/workflows/CodeQL%20Security%20Scan/badge.svg)](https://github.com/kbarf/wakfocus/actions/workflows/codeql.yml)
+[![CodeQL](https://github.com/kevinbarfleur/wakfocus/workflows/CodeQL%20Security%20Scan/badge.svg)](https://github.com/kevinbarfleur/wakfocus/actions/workflows/codeql.yml)
 [![Security Policy](https://img.shields.io/badge/security-policy-blue.svg)](SECURITY.md)
 
 Quickly switch between multiple Wakfu windows using a hotkey. Press F4 to cycle through your game windows.
