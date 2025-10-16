@@ -28,7 +28,6 @@ Quickly switch between multiple Wakfu windows using a hotkey. Press F4 to cycle 
 ## Requirements
 
 - Windows 10/11
-- .NET 8.0 Runtime
 
 ## License
 
