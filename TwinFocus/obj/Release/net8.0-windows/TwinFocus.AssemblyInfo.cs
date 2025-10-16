@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TwinFocus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ed87ba03c70d5457536f9440f03073d8e959524")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+501793b43418c0b1fc631629033df4173a106cbd")]
 [assembly: System.Reflection.AssemblyProductAttribute("TwinFocus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TwinFocus")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

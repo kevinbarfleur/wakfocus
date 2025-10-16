@@ -2,16 +2,16 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
-using TwinFocus.Config;
-using TwinFocus.Core;
-using TwinFocus.NativeAPI;
-using TwinFocus.UI;
+using WakFocus.Config;
+using WakFocus.Core;
+using WakFocus.NativeAPI;
+using WakFocus.UI;
 using MessageBox = System.Windows.MessageBox;
 
-namespace TwinFocus;
+namespace WakFocus;
 
 /// <summary>
-/// TwinFocus - Lightweight window switcher for multi-accounting games
+/// WakFocus - Lightweight window switcher for multi-accounting games
 /// </summary>
 public partial class App : System.Windows.Application
 {
@@ -23,7 +23,6 @@ public partial class App : System.Windows.Application
     private ConfigService? _configService;
     private AppConfig? _config;
     private bool _isEnabled = true;
-    private IntPtr _lastActivatedWindow = IntPtr.Zero;
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -58,7 +57,7 @@ public partial class App : System.Windows.Application
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Failed to start TwinFocus: {ex.Message}", "TwinFocus Error",
+            MessageBox.Show($"Failed to start WakFocus: {ex.Message}", "WakFocus Error",
                 MessageBoxButton.OK, MessageBoxImage.Error);
             Shutdown();
         }
@@ -102,7 +101,7 @@ public partial class App : System.Windows.Application
                            $"   {_configService?.GetConfigPath()}\n\n" +
                            $"Suggested alternatives: F3, F4, F5, F6, Ctrl+Alt+W";
 
-            MessageBox.Show(message, "TwinFocus - Hotkey Already In Use",
+            MessageBox.Show(message, "WakFocus - Hotkey Already In Use",
                 MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
@@ -152,11 +151,7 @@ public partial class App : System.Windows.Application
             if (nextWindow != null)
             {
                 // Activate the window
-                bool success = await (_focusController?.ActivateWindowAsync(nextWindow) ?? System.Threading.Tasks.Task.FromResult(false));
-                if (success)
-                {
-                    _lastActivatedWindow = nextWindow.Handle;
-                }
+                await (_focusController?.ActivateWindowAsync(nextWindow) ?? System.Threading.Tasks.Task.FromResult(false));
             }
         }
         catch (Exception ex)
@@ -176,7 +171,7 @@ public partial class App : System.Windows.Application
     {
         _trayIcon = new NotifyIcon
         {
-            Text = "TwinFocus - Window Switcher",
+            Text = "WakFocus - Window Switcher",
             Visible = true
         };
 
@@ -270,7 +265,7 @@ public partial class App : System.Windows.Application
         catch (Exception ex)
         {
             MessageBox.Show($"Failed to open settings: {ex.Message}",
-                "TwinFocus - Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                "WakFocus - Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -304,7 +299,7 @@ public partial class App : System.Windows.Application
         catch (Exception ex)
         {
             MessageBox.Show($"Failed to apply settings: {ex.Message}",
-                "TwinFocus - Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                "WakFocus - Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TwinFocus.Config;
+using WakFocus.Config;
 
-namespace TwinFocus.Core;
+namespace WakFocus.Core;
 
 /// <summary>
 /// Orders windows for cycling based on configured strategy

@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kbarf\\Dropbox\\Projects\\wakfocus\\TwinFocus\\TwinFocus.csproj",
-      "projectName": "TwinFocus",
-      "projectPath": "C:\\Users\\kbarf\\Dropbox\\Projects\\wakfocus\\TwinFocus\\TwinFocus.csproj",
+      "projectUniqueName": "C:\\Users\\kbarf\\Dropbox\\Projects\\wakfocus\\TwinFocus\\WakFocus.csproj",
+      "projectName": "WakFocus",
+      "projectPath": "C:\\Users\\kbarf\\Dropbox\\Projects\\wakfocus\\TwinFocus\\WakFocus.csproj",
       "packagesPath": "C:\\Users\\kbarf\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\kbarf\\Dropbox\\Projects\\wakfocus\\TwinFocus\\obj\\",
       "projectStyle": "PackageReference",

@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace TwinFocus.NativeAPI;
+namespace WakFocus.NativeAPI;
 
 /// <summary>
 /// P/Invoke declarations for Kernel32.dll - Process and thread management

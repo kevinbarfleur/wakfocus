@@ -3,11 +3,8 @@ C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\bin\Release\net8.0-windows\Tw
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\bin\Release\net8.0-windows\TwinFocus.runtimeconfig.json
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\bin\Release\net8.0-windows\TwinFocus.dll
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\bin\Release\net8.0-windows\TwinFocus.pdb
-C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\MainWindow.g.cs
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\App.g.cs
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\TwinFocus_MarkupCompile.cache
-C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\TwinFocus_MarkupCompile.lref
-C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\MainWindow.baml
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\TwinFocus.g.resources
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\TwinFocus.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\kbarf\Dropbox\Projects\wakfocus\TwinFocus\obj\Release\net8.0-windows\TwinFocus.AssemblyInfoInputs.cache

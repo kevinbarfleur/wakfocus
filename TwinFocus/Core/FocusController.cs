@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using TwinFocus.NativeAPI;
+using WakFocus.NativeAPI;
 
-namespace TwinFocus.Core;
+namespace WakFocus.Core;
 
 /// <summary>
 /// Controls window focus and activation with fallback strategies

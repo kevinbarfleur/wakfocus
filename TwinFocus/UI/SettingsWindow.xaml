@@ -1,7 +1,7 @@
-<Window x:Class="TwinFocus.UI.SettingsWindow"
+<Window x:Class="WakFocus.UI.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="TwinFocus - Settings"
+        Title="WakFocus - Settings"
         Width="600" Height="650"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize">
@@ -98,14 +98,14 @@
                 <GroupBox Header="Target Windows">
                     <StackPanel>
                         <TextBlock Text="Which windows should be included in the cycle?" FontWeight="SemiBold"/>
-                        <TextBlock Text="Process Name (e.g., java.exe for Wakfu/Dofus):" Margin="0,10,0,5"/>
+                        <TextBlock Text="Process Name (e.g., java.exe for Wakfu):" Margin="0,10,0,5"/>
                         <TextBox x:Name="ProcessNameTextBox" Width="400" HorizontalAlignment="Left"/>
 
                         <TextBlock Text="Window Title Contains (optional, regex):" Margin="0,10,0,5"/>
                         <TextBox x:Name="TitleFilterTextBox" Width="400" HorizontalAlignment="Left"/>
 
                         <TextBlock Margin="0,10,0,0" FontSize="11" Foreground="Gray" TextWrapping="Wrap">
-                            Examples: java.exe (Wakfu/Dofus), notepad.exe (testing), chrome.exe
+                            Examples: java.exe (Wakfu), notepad.exe (testing), chrome.exe
                         </TextBlock>
                     </StackPanel>
                 </GroupBox>

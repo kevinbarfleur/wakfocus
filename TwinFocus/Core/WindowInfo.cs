@@ -1,6 +1,6 @@
 using System;
 
-namespace TwinFocus.Core;
+namespace WakFocus.Core;
 
 /// <summary>
 /// Information about a discovered window

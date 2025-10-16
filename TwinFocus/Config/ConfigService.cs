@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text.Json;
 
-namespace TwinFocus.Config;
+namespace WakFocus.Config;
 
 /// <summary>
 /// Manages loading and saving application configuration
@@ -11,7 +11,7 @@ public class ConfigService
 {
     private static readonly string AppDataFolder = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-        "TwinFocus");
+        "WakFocus");
 
     private static readonly string ConfigFilePath = Path.Combine(AppDataFolder, "config.json");
 
@@ -67,7 +67,7 @@ public class ConfigService
     }
 
     /// <summary>
-    /// Get default configuration optimized for Wakfu/Dofus multi-accounting
+    /// Get default configuration optimized for Wakfu multi-accounting
     /// </summary>
     private AppConfig GetDefaultConfig()
     {
@@ -83,7 +83,7 @@ public class ConfigService
             {
                 new TargetMatcher { Type = "process", Match = "java.exe" },
                 new TargetMatcher { Type = "class", Match = "SunAwtFrame|LWJGL" },
-                new TargetMatcher { Type = "title", Match = "(?i)wakfu|dofus" }
+                new TargetMatcher { Type = "title", Match = "(?i)wakfu" }
             },
             Ordering = new OrderingConfig
             {

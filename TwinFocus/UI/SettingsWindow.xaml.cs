@@ -4,14 +4,14 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using TwinFocus.Config;
-using TwinFocus.Core;
+using WakFocus.Config;
+using WakFocus.Core;
 using MessageBox = System.Windows.MessageBox;
 
-namespace TwinFocus.UI;
+namespace WakFocus.UI;
 
 /// <summary>
-/// Settings window for TwinFocus configuration
+/// Settings window for WakFocus configuration
 /// </summary>
 public partial class SettingsWindow : Window
 {
@@ -220,7 +220,7 @@ public partial class SettingsWindow : Window
             _config.Targets.Clear();
 
             // Add process target if specified
-            string processName = ProcessNameTextBox.Text?.Trim();
+            string? processName = ProcessNameTextBox.Text?.Trim();
             if (!string.IsNullOrEmpty(processName))
             {
                 _config.Targets.Add(new TargetMatcher
@@ -231,7 +231,7 @@ public partial class SettingsWindow : Window
             }
 
             // Add title target if specified
-            string titleFilter = TitleFilterTextBox.Text?.Trim();
+            string? titleFilter = TitleFilterTextBox.Text?.Trim();
             if (!string.IsNullOrEmpty(titleFilter))
             {
                 _config.Targets.Add(new TargetMatcher
@@ -265,14 +265,14 @@ public partial class SettingsWindow : Window
             SettingsSaved?.Invoke(this, EventArgs.Empty);
 
             MessageBox.Show("Settings saved successfully!\n\nThe new hotkey is now active.",
-                "TwinFocus - Settings Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+                "WakFocus - Settings Saved", MessageBoxButton.OK, MessageBoxImage.Information);
 
             Close();
         }
         catch (Exception ex)
         {
             MessageBox.Show($"Failed to save settings:\n\n{ex.Message}",
-                "TwinFocus - Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                "WakFocus - Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -312,7 +312,7 @@ public partial class SettingsWindow : Window
         catch (Exception ex)
         {
             MessageBox.Show($"Failed to scan windows:\n\n{ex.Message}",
-                "TwinFocus - Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                "WakFocus - Error", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 
@@ -449,16 +449,16 @@ public partial class SettingsWindow : Window
 /// </summary>
 public class WindowItem
 {
-    public string Title { get; set; }
-    public string ProcessName { get; set; }
-    public string HandleHex { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public string ProcessName { get; set; } = string.Empty;
+    public string HandleHex { get; set; } = string.Empty;
     public IntPtr Handle { get; set; }
     public string Subtitle => $"{ProcessName} • {HandleHex}";
 
     public WindowItem(WindowInfo window)
     {
         Title = string.IsNullOrEmpty(window.Title) ? "(No Title)" : window.Title;
-        ProcessName = window.ProcessName;
+        ProcessName = window.ProcessName ?? "Unknown";
         HandleHex = $"0x{window.Handle:X8}";
         Handle = window.Handle;
     }

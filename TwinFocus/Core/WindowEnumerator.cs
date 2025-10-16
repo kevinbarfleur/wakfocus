@@ -4,10 +4,10 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using TwinFocus.Config;
-using TwinFocus.NativeAPI;
+using WakFocus.Config;
+using WakFocus.NativeAPI;
 
-namespace TwinFocus.Core;
+namespace WakFocus.Core;
 
 /// <summary>
 /// Enumerates and filters windows based on configuration rules

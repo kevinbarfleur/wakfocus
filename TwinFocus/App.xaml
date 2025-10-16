@@ -1,7 +1,7 @@
-﻿<Application x:Class="TwinFocus.App"
+﻿<Application x:Class="WakFocus.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:TwinFocus">
+             xmlns:local="clr-namespace:WakFocus">
     <Application.Resources>
 
     </Application.Resources>

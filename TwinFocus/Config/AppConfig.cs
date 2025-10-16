@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace TwinFocus.Config;
+namespace WakFocus.Config;
 
 /// <summary>
 /// Application configuration model

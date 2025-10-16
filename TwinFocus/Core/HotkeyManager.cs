@@ -1,8 +1,8 @@
 using System;
 using System.Windows.Interop;
-using TwinFocus.NativeAPI;
+using WakFocus.NativeAPI;
 
-namespace TwinFocus.Core;
+namespace WakFocus.Core;
 
 /// <summary>
 /// Manages global hotkey registration and routing WM_HOTKEY messages
@@ -29,7 +29,7 @@ public class HotkeyManager : IDisposable
             return;
 
         // Create a message-only window to receive WM_HOTKEY messages
-        var parameters = new HwndSourceParameters("TwinFocusHotkeyWindow")
+        var parameters = new HwndSourceParameters("WakFocusHotkeyWindow")
         {
             Width = 0,
             Height = 0,
