@@ -1,6 +1,18 @@
 # WakFocus - Window Switcher for Wakfu Multi-Accounting
 
+[![CodeQL](https://github.com/kbarf/wakfocus/workflows/CodeQL%20Security%20Scan/badge.svg)](https://github.com/kbarf/wakfocus/actions/workflows/codeql.yml)
+[![Security Policy](https://img.shields.io/badge/security-policy-blue.svg)](SECURITY.md)
+
 Quickly switch between multiple Wakfu windows using a hotkey. Press F4 to cycle through your game windows.
+
+## Security
+
+**WakFocus is safe and transparent:**
+- Source code scanned with CodeQL security analysis
+- Release binaries scanned with VirusTotal (70+ antivirus engines)
+- Built automatically by GitHub Actions
+- SHA256 checksums provided for all releases
+- See [SECURITY.md](SECURITY.md) for full details
 
 ## Features
 
