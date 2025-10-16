@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WakFocus", "TwinFocus\WakFocus.csproj", "{CF5A5317-6A4B-462B-B47D-A9B0C5F084AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WakFocus", "WakFocus\WakFocus.csproj", "{CF5A5317-6A4B-462B-B47D-A9B0C5F084AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
