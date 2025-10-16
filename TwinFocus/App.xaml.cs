@@ -183,6 +183,9 @@ public partial class App : System.Windows.Application
         // Create a simple icon (you can replace this with an actual .ico file)
         _trayIcon.Icon = SystemIcons.Application;
 
+        // Double-click to open settings
+        _trayIcon.DoubleClick += (s, e) => OnOpenSettings(s, e);
+
         // Create context menu
         var contextMenu = new ContextMenuStrip();
 
@@ -231,8 +234,19 @@ public partial class App : System.Windows.Application
             if (_configService == null || _config == null)
                 return;
 
+            // Pause hotkey while settings window is open
+            _hotkeyManager?.Unregister();
+
             var settingsWindow = new SettingsWindow(_configService, _config);
             settingsWindow.SettingsSaved += OnSettingsSaved;
+            settingsWindow.Closed += (s, args) =>
+            {
+                // Re-register hotkey when settings closes (if not already re-registered by save)
+                if (_hotkeyManager != null && !settingsWindow.WasSaved)
+                {
+                    RegisterHotkey();
+                }
+            };
             settingsWindow.ShowDialog();
         }
         catch (Exception ex)

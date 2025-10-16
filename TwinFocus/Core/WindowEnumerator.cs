@@ -159,32 +159,103 @@ public class WindowEnumerator
     }
 
     /// <summary>
-    /// Check if window matches any configured target rule
+    /// Check if window matches configured target rules
+    /// Uses AND logic: all specified filter types must match
     /// </summary>
     private bool MatchesAnyTarget(WindowInfo window)
     {
+        // Group targets by type
+        var processTargets = new List<TargetMatcher>();
+        var classTargets = new List<TargetMatcher>();
+        var titleTargets = new List<TargetMatcher>();
+
         foreach (var target in _config.Targets)
         {
-            try
+            switch (target.Type)
             {
-                bool matches = target.Type switch
-                {
-                    "process" => MatchesProcess(window, target.Match, target.PathRegex),
-                    "class" => MatchesClass(window, target.Match),
-                    "title" => MatchesTitle(window, target.Match),
-                    _ => false
-                };
-
-                if (matches)
-                    return true;
-            }
-            catch
-            {
-                // Invalid regex or other error - skip this matcher
+                case "process":
+                    processTargets.Add(target);
+                    break;
+                case "class":
+                    classTargets.Add(target);
+                    break;
+                case "title":
+                    titleTargets.Add(target);
+                    break;
             }
         }
 
-        return false;
+        // If process filters exist, at least one must match
+        if (processTargets.Count > 0)
+        {
+            bool processMatched = false;
+            foreach (var target in processTargets)
+            {
+                try
+                {
+                    if (MatchesProcess(window, target.Match, target.PathRegex))
+                    {
+                        processMatched = true;
+                        break;
+                    }
+                }
+                catch
+                {
+                    // Invalid matcher - skip
+                }
+            }
+            if (!processMatched)
+                return false; // Process filter exists but didn't match
+        }
+
+        // If class filters exist, at least one must match
+        if (classTargets.Count > 0)
+        {
+            bool classMatched = false;
+            foreach (var target in classTargets)
+            {
+                try
+                {
+                    if (MatchesClass(window, target.Match))
+                    {
+                        classMatched = true;
+                        break;
+                    }
+                }
+                catch
+                {
+                    // Invalid matcher - skip
+                }
+            }
+            if (!classMatched)
+                return false; // Class filter exists but didn't match
+        }
+
+        // If title filters exist, at least one must match
+        if (titleTargets.Count > 0)
+        {
+            bool titleMatched = false;
+            foreach (var target in titleTargets)
+            {
+                try
+                {
+                    if (MatchesTitle(window, target.Match))
+                    {
+                        titleMatched = true;
+                        break;
+                    }
+                }
+                catch
+                {
+                    // Invalid matcher - skip
+                }
+            }
+            if (!titleMatched)
+                return false; // Title filter exists but didn't match
+        }
+
+        // All specified filter types matched
+        return true;
     }
 
     private bool MatchesProcess(WindowInfo window, string match, string? pathRegex)

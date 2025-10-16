@@ -87,7 +87,8 @@ public class ConfigService
             },
             Ordering = new OrderingConfig
             {
-                Mode = "screenYThenX"
+                Mode = "manual",
+                Manual = new()
             },
             IncludeMinimized = true,
             SkipInvisible = true,
