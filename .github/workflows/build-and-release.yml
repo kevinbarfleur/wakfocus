@@ -31,24 +31,25 @@ jobs:
     - name: Build Release (Self-contained)
       run: dotnet publish WakFocus/WakFocus.csproj -c Release -r win-x64 --self-contained -o ./publish/self-contained
 
-    - name: Generate checksums
+    - name: Rename executables and generate checksums
       shell: pwsh
       run: |
-        $frameworkExe = "./publish/framework-dependent/WakFocus.exe"
-        $selfContainedExe = "./publish/self-contained/WakFocus.exe"
+        # Rename files to avoid duplicate names
+        Copy-Item "./publish/framework-dependent/WakFocus.exe" -Destination "./WakFocus-framework-dependent.exe"
+        Copy-Item "./publish/self-contained/WakFocus.exe" -Destination "./WakFocus-self-contained.exe"
 
-        $frameworkHash = (Get-FileHash -Path $frameworkExe -Algorithm SHA256).Hash
-        $selfContainedHash = (Get-FileHash -Path $selfContainedExe -Algorithm SHA256).Hash
+        $frameworkHash = (Get-FileHash -Path "./WakFocus-framework-dependent.exe" -Algorithm SHA256).Hash
+        $selfContainedHash = (Get-FileHash -Path "./WakFocus-self-contained.exe" -Algorithm SHA256).Hash
 
         @"
         # SHA256 Checksums
 
-        ## WakFocus.exe (Framework-dependent)
+        ## WakFocus-framework-dependent.exe
         ``````
         $frameworkHash
         ``````
 
-        ## WakFocus.exe (Self-contained)
+        ## WakFocus-self-contained.exe
         ``````
         $selfContainedHash
         ``````
@@ -56,7 +57,7 @@ jobs:
         ## How to verify
         On Windows PowerShell:
         ``````powershell
-        Get-FileHash -Path WakFocus.exe -Algorithm SHA256
+        Get-FileHash -Path WakFocus-*.exe -Algorithm SHA256
         ``````
         "@ | Out-File -FilePath checksums.txt -Encoding UTF8
 
@@ -65,14 +66,16 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          ./publish/framework-dependent/WakFocus.exe
-          ./publish/self-contained/WakFocus.exe
+          WakFocus-framework-dependent.exe
+          WakFocus-self-contained.exe
           checksums.txt
         body: |
           ## Downloads
 
-          - **WakFocus.exe** (Framework-dependent) - Requires .NET 8.0 Runtime
-          - **WakFocus.exe** (Self-contained) - No runtime required, larger file size
+          - **WakFocus-framework-dependent.exe** - Requires .NET 8.0 Runtime (~200KB)
+          - **WakFocus-self-contained.exe** - No runtime required (~60MB)
+
+          Rename the downloaded file to `WakFocus.exe` after downloading.
 
           ## Security
 
